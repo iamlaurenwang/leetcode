@@ -7,38 +7,27 @@ class ListNode{
 }
 
 var mergeTwoLists = function(list1, list2) {
-    let head1 = list1.val
-    let head2 = list2.val
-    const ans = new ListNode()
+    let dummy = new ListNode(0)
+    let curr = dummy
 
-    while(head1){
-        if(head1 === head2){
-            ans.val = head1
-            ans.next = new ListNode(head2, undefined)
-        }else if(head1 < head2){
-            ans.val = head1
-            ans.next = new ListNode(head2, undefined)
-        }else if( head1 > head2 ){
-            ans.val = head2
-            ans.next = new ListNode(head1, undefined)
+    while(list1 !== null && list2 !== null){
+        if(list1.val <= list2.val){
+            curr.next = list1
+            list1 = list1.next
+        }else{
+            curr.next = list2
+            list2 = list2.next
         }
-
-
-        if(head1.next){
-            head1 = head1.next
-        }
-
-        if(head2.next){
-            head2 = head2.next
-        }
-        
+        curr = curr.next // 指針前進
     }
-   
-    return ans
+
+    curr.next = list1 || list2
+
+    return dummy.next
 };
 
 
-const l1 = new ListNode(1, new ListNode(2, new ListNode(4, undefined)))
-const l2 = new ListNode(1, new ListNode(3, new ListNode(4, undefined)))
+let l1 = new ListNode(1, new ListNode(2, new ListNode(4)));
+let l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
 
 console.log(mergeTwoLists(l1, l2))
