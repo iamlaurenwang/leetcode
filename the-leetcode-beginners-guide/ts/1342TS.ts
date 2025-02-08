@@ -1,20 +1,18 @@
 function numberOfSteps(num: number): number{
-    if(!num || num === 0) return 0
+    if(num === 0) return 0
 
     let steps = 0
-    let target = num
+    let current = num
 
-    while(target !== 0){
-        if(target % 2 === 0){
-            target = target /2
+    while(current !== 0){
+        if(current % 2 === 0){
+            current = current /2
         }else{
-            target -= 1
+            current -= 1
         }
 
         steps++
     }
-
-
     return steps
 }
 
