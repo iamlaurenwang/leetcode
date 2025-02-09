@@ -8,14 +8,14 @@ class ListNode{
 }
 
 var hasCycle = function(head) {
-    const mySet = new Set();
-    while(head){
-        if(mySet.has(head.val)){
-            return true
-        }else{
-            mySet.add(head.val)
-            head = head.next
-        }
+    let slow = head 
+    let fast = head
+
+    while(fast !== null && fast.next !== null){
+        slow = slow.next
+        fast = fast.next.next
+
+        if(slow === fast)return true
     }
 
     return false
