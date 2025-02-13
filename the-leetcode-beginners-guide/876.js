@@ -24,7 +24,7 @@ var middleNode = function(head) {
     let listLen = 0
     let curr = head
 
-    while(curr && curr.next !== null){
+    while(curr){ // curr.next !== null: 會少算最後一個節點
         listLen += 1
         curr = curr.next
     }
